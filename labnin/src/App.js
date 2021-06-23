@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import Saude from './components/Saude'
 import Servico from './components/Servico'
 import Tecnologia from './components/Tecnologia'
+const Body = styled.div`
+  display: grid;
+  grid-auto-rows: 90px 1fr 107px;
+`
 const Ninja = styled.img`
   width: 12%;
   border-radius: 100%;
@@ -47,7 +51,7 @@ const Footer = styled.div`
     background-color: #13293D;
     color:white;
     margin-top:0%;
-    padding: 0.5%;
+    padding: 0%;
  `
 export default class App extends React.Component {
   state = {
@@ -62,11 +66,14 @@ export default class App extends React.Component {
   onClickTelaServico = () => {
     this.setState({ tela: 'servico' })
   }
+  onClickHome=()=>{
+    this.setState({tela:'principal'})
+  }
   render() {
     return (
-      <div>
+      <Body>
         <Header>
-          <NinjaTexto>
+          <NinjaTexto onClick={this.onClickHome}>
             <Ninja src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c9a63dc4-58ca-4ee5-8f1e-52869fbe9ad8/ddsqdrz-f8df9399-840f-45a8-8135-255a39b097c2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M5YTYzZGM0LTU4Y2EtNGVlNS04ZjFlLTUyODY5ZmJlOWFkOFwvZGRzcWRyei1mOGRmOTM5OS04NDBmLTQ1YTgtODEzNS0yNTVhMzliMDk3YzIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._JBC0k_p9sf7I-zLu32D6Kdqywxzjv8qNTjq2CQNn_Y" />
             <h1>Labeninjas</h1>
           </NinjaTexto>
@@ -106,7 +113,7 @@ export default class App extends React.Component {
           <RedesSociais src="https://image.flaticon.com/icons/png/512/87/87390.png" />
           <RedesSociais src="https://image.flaticon.com/icons/png/512/49/49351.png" />
         </Footer>
-      </div>
+      </Body>
     )
   }
 }
