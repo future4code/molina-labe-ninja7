@@ -1,85 +1,25 @@
 import React from 'react'
 import axios from 'axios'
-import {url} from '../contants/constant'
-const headers = {
-    headers: {
-        Authorization: "e857c53a-24f4-4fb0-801b-ff6226302fca"
-    }
-}
+import { url } from '../contants/constant'
+import Cadastro from './Cadastro'
+
 export default class Saude extends React.Component {
     state = {
-        inputTitulo: '',
-        inputDrescricao: '',
-        inputPreco: '',
-        inputPagamentos: '',
-        inputData: '',
-        array: []
+        tela: 'saude'
     }
-    onChangeTitulo = (event) => {
-        this.setState({ inputTitulo: event.target.value })
-    }
-    onChangeDescricao = (event) => {
-        this.setState({ inputDrescricao: event.target.value })
-    }
-    onChangePreco = (event) => {
-        this.setState({ inputPreco: event.target.value })
-    }
-    onChangePagamentos = (event) => {
-        this.setState({ inputPagamentos: event.target.value })
-    }
-    onChangeData = (event) => {
-        this.setState({ inputData: event.target.value })
-    }
-    componentDidMount() {
-        this.getAllJobs()
-    }
-    getAllJobs = () => {
-        
-
-        axios.get(`${url}/jobs`, headers)
-            .then((res) => {
-                console.log('get',res.data.jobs)
-                this.setState({array: res.data.jobs})
-            })
-            .catch((err) => {
-                console.log(err.response)
-            })
-    }
-    createJob = () => {
-        
-        const body = {
-            title: this.state.inputTitulo,
-            description: this.state.inputDrescricao,
-            price:Number(this.state.inputPreco) ,
-            paymentMethods: [this.state.inputPagamentos],
-            dueDate: this.state.inputData
-        }
-        axios.post(`${url}/jobs`, body, headers)
-            .then((res) => {
-                console.log('create',res)
-                this.getAllJobs()
-            })
-            .catch((err) => {
-                console.log(err.response.data)
-            })
+    onClickTela = () => {
+        this.setState({ tela: 'cadastro' })
     }
     render() {
-        console.log('array',this.state.array)
+
         return (
             <div>
-                <h1>saude</h1>
-                <label>Tipo de trabalho</label>
-                <input onChange={this.onChangeTitulo} value={this.state.inputTitulo} />
-                <label>Descreva sobre ele </label>
-                <input onChange={this.onChangeDescricao} value={this.state.inputDrescricao} />
-                <label>Preço</label>
-                <input type="number" onChange={this.onChangePreco} value={this.state.inputPreco} />
-                <label>Métodos de pagamentos</label>
-                <input onChange={this.onChangePagamentos} value={this.state.inputPagamentos} />
-                <label>Data para expirar</label>
-                <input pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" onChange={this.onChangeData} type='date' value={this.state.inputData} />
-                <button onClick={this.createJob}>Adicionar</button>
+                {this.state.tela === 'cadastro' ? <Cadastro /> : <div>
+                    <h1>saude</h1>
+                    <button onClick={this.onClickTela}>Cadastro</button>
+                </div>}
             </div>
+
         )
     }
 }
