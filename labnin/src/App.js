@@ -4,10 +4,11 @@ import Saude from './pages/Saude'
 import Servico from './pages/Servico'
 import Tecnologia from './pages/Tecnologia'
 import Header from './components/Header'
+
 const Body = styled.div`
 
   display: grid;
-  grid-auto-rows: 90px 1fr 107px;
+  
 `
 const RedesSociais = styled.img`
   width: 2%;
@@ -57,7 +58,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Body>
-     <Header/>
+     <Header onClick={this.onClickHome}/>
         {this.state.tela === 'saude' ? <Saude /> :
           this.state.tela === 'tecnologia' ? <Tecnologia /> :
             this.state.tela === 'servico' ? <Servico /> : <div>
