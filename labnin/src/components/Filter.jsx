@@ -1,5 +1,5 @@
 import React from 'react'
-import Saude from './Saude'
+import Saude from '../pages/Saude'
 import styled from 'styled-components'
 const Imagem = styled.img`
     width: 20%;

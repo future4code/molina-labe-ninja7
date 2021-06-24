@@ -3,7 +3,7 @@ import axios from 'axios'
 import { url } from '../contants/constant'
 import Cadastro from './Cadastro'
 import styled from 'styled-components'
-import Filter from './Filter'
+import Filter from '../components/Filter'
 const Imagem = styled.img`
     width: 20%;
 `
