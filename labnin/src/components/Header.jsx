@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // import React from "react"
 // import styled from "styled-components";
 
@@ -30,7 +30,7 @@
 //             </NinjaTexto>
             
 //         </div>
-=======
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -87,7 +87,7 @@ export default Header
 //                 </NinjaTexto>
 //                 <button>Quero me cadastrar</button>
 //             </div>
->>>>>>> 13d3d329f57568ca6ac588d77a0f28059c5662d4
+
     
 // )} 
 
