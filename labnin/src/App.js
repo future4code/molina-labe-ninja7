@@ -4,9 +4,15 @@ import Saude from './pages/Saude'
 import Servico from './pages/Servico'
 import Tecnologia from './pages/Tecnologia'
 import Header from './components/Header'
+<<<<<<< HEAD
 
+=======
+import Filter from './components/Filter'
+>>>>>>> 13d3d329f57568ca6ac588d77a0f28059c5662d4
 const Body = styled.div`
-
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
   display: grid;
   
 `
@@ -58,7 +64,11 @@ export default class App extends React.Component {
   render() {
     return (
       <Body>
+<<<<<<< HEAD
      <Header onClick={this.onClickHome}/>
+=======
+        <Header/>
+>>>>>>> 13d3d329f57568ca6ac588d77a0f28059c5662d4
         {this.state.tela === 'saude' ? <Saude /> :
           this.state.tela === 'tecnologia' ? <Tecnologia /> :
             this.state.tela === 'servico' ? <Servico /> : <div>

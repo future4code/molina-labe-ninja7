@@ -9,7 +9,7 @@ const Imagem = styled.img`
     width: 20%;
     border-radius: 100%;
 `
-const Cadastros=styled.h1`
+const Cadastros = styled.h1`
     text-align: center;
 `
 const Main = styled.div`
@@ -29,7 +29,7 @@ const Adicionar = styled.div`
     justify-content: center;
     align-items: center;
 `
-const AlinharBotao=styled.div`
+const AlinharBotao = styled.div`
     display: flex;
 `
 const InputFlex = styled.div`
@@ -130,22 +130,29 @@ export default class Cadastro extends React.Component {
     }
     render() {
         console.log('array', this.state.array)
-        console.log('array1', this.state.arrayServicos)
-        console.log('array2', this.state.arraySaude)
-        console.log('titulo', this.state.inputTitulo)
+        console.log('array serviços', this.state.arrayServicos)
+        console.log('array Saude', this.state.arraySaude)
+        console.log('array tecnologia', this.state.arrayTecnologia)
         console.log(this.state.irParaTela)
+        const lista = this.state.arrayServicos.map((dados) => {
+            return (
+                <div>
+                    <h1>{dados.title}</h1>
+                </div>
+            )
+        })
         return (
             <Main>
                 {this.state.irParaTela === 'servico' ? <Servico /> :
                     this.state.irParaTela === 'saude' ? <Saude /> :
-                        this.state.irParaTela === 'tecnologia' ? <Tecnologia /> :
+                        this.state.irParaTela === 'tecnologia' ? <Tecnologia arrayTecnologia={this.state.arrayTecnologia} /> :
 
                             <div>
                                 <div><Cadastros>Bora Cadastrar?</Cadastros></div>
                                 <div>
                                     <SepararInputs>
                                         <InputFlex>
-                                        <label>Serviço Prestado:</label>
+                                            <label>Serviço Prestado:</label>
                                             <select onChange={this.onChangeTitulo} value={this.state.inputTitulo}   >
                                                 <option onChange={this.onChangeTitulo} value='Assistência técnica' >Assistência técnica</option>
                                                 <option onChange={this.onChangeTitulo} value='Saúde' >Saúde</option>
@@ -157,7 +164,7 @@ export default class Cadastro extends React.Component {
                                         </InputFlex>
                                         <InputFlex>
 
-                                        <label>Metodo de Pagamento</label>
+                                            <label>Metodo de Pagamento</label>
                                             <input placeholder='Métodos de pagamento' onChange={this.onChangePagamentos} value={this.state.inputPagamentos} />
                                             <div>
                                                 <label>Data para expirar:</label>
@@ -174,7 +181,6 @@ export default class Cadastro extends React.Component {
                             </div>
 
 
-
                 }
                 {this.state.irParaTela === 'cadastrado' && <Adicionar>
                     <Imagem src='https://image.shutterstock.com/image-vector/cute-happy-ninja-smiling-his-600w-359792546.jpg' />
@@ -182,13 +188,13 @@ export default class Cadastro extends React.Component {
                         para tela em que se cadastrou e vai estar lá!
                     </h1>
                     <AlinharBotao>
-                    <button onClick={this.onClickSaude}>Saúde</button>
-                    <button onClick={this.onClickServico}>Assistência Técnica</button>
-                    <button onClick={this.onClickTecnologia}>Tecnologia</button>
+                        <button onClick={this.onClickSaude}>Saúde</button>
+                        <button onClick={this.onClickServico}>Assistência Técnica</button>
+                        <button onClick={this.onClickTecnologia}>Tecnologia</button>
                     </AlinharBotao>
-                   
+
                 </Adicionar>}
-                
+
             </Main>
 
         )
