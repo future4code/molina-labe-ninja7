@@ -4,6 +4,7 @@ import { url } from '../contants/constant'
 import Cadastro from './Cadastro'
 import styled from 'styled-components'
 import Filter from './Filter'
+import Carrinho from './Carrinho'
 const Imagem = styled.img`
     width: 20%;
 `
@@ -27,7 +28,9 @@ export default class Saude extends React.Component {
         clickTaken: false,
         max: 10000,
         min: 0,
-        titulo: ''
+        titulo: '',
+        sort: '',
+        array1:[]
     }
     onClickTela = () => {
         this.setState({ tela: 'cadastro' })
@@ -42,9 +45,12 @@ export default class Saude extends React.Component {
                 this.setState({ clickTaken: true })
                 this.setState({ array: res.data.jobs })
                 const Lista = this.state.array.map((dados) => {
+                    
                     if (dados.title === 'Saúde') {
                         const copiaArraySaude = [...this.state.arraySaude, dados]
                         this.setState({ arraySaude: copiaArraySaude })
+                        const copia = [...this.state.array1,dados.description]
+                        this.setState({array1:copia})
                     }
                 })
             })
@@ -74,12 +80,24 @@ export default class Saude extends React.Component {
             })
     }
     filtro = () => {
+       
         return this.state.arraySaude
             .filter((price) => this.state.max ? price.price <= this.state.max : true)
             .filter((price) => this.state.max ? price.price >= this.state.min : true)
             .filter((price) => this.state.titulo ? price.description.includes(this.state.titulo) : true)
+            .sort((a, b) => this.state.sort === 'Preco' ? a.price - b.price : 
+            this.state.sort==='descricao' ? a.description> b.description : b.description > a.description
+            )
+            
+           
+    }
+   
+    onChangeSort=(event)=>{
+        this.setState({sort:event.target.value})
     }
     render() {
+        
+        console.log('descricao', this.state.array1.sort())
         console.log('taken', this.state.clickTaken)
         
         /*
@@ -104,6 +122,7 @@ export default class Saude extends React.Component {
                     <h4>R${dado.price},00</h4>
                     <h4>Forma de Pagamento: {dado.paymentMethods}</h4>
                     <button onClick={()=>this.updateJob(dado.id)} >Contrate</button>
+                    
                 </Container>
                 )
         })
@@ -116,7 +135,10 @@ export default class Saude extends React.Component {
                                                             titulo={this.state.titulo}
                                                             onChangeMax={this.onChangeMax}
                                                             onChangeMin={this.onChangeMin}
-                                                            onChangeTitulo={this.onChangeTitulo} />
+                                                            onChangeTitulo={this.onChangeTitulo}
+                                                            onChangeSort={this.onChangeSort}
+                                                            sort={this.state.sort} />
+
                     <SepararContainer>
                     {saude}
                     </SepararContainer>
@@ -124,6 +146,7 @@ export default class Saude extends React.Component {
                     <h2>É um profissional da saúde? Se cadastre aqui!</h2>
                     <button onClick={this.onClickTela}>Cadastro</button>
                 </div>}
+                <Carrinho arraySaude={this.state.arraySaude}/>
             </div>
 
         )

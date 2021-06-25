@@ -27,7 +27,11 @@ export default class Servico extends React.Component{
         clickTaken: false,
         max: 10000,
         min: 0,
-        titulo: ''
+        titulo: '',
+        sort: '',
+    }
+    onChangeSort=(event)=>{
+        this.setState({sort:event.target.value})
     }
     onClickTela = () => {
         this.setState({ tela: 'cadastro' })
@@ -78,6 +82,9 @@ export default class Servico extends React.Component{
         .filter((price)=>this.state.max ? price.price <= this.state.max :true)
         .filter((price)=>this.state.max ? price.price >= this.state.min :true)
         .filter((price)=>this.state.titulo ? price.description.includes(this.state.titulo) :true)
+        .sort((a, b) => this.state.sort === 'Preco' ? a.price - b.price : 
+            this.state.sort==='descricao' && a.description> b.description 
+            )
     }
     render(){
         const lista = this.filtro()
@@ -101,7 +108,9 @@ export default class Servico extends React.Component{
                                                             titulo={this.state.titulo}
                                                             onChangeMax={this.onChangeMax}
                                                             onChangeMin={this.onChangeMin}
-                                                            onChangeTitulo={this.onChangeTitulo} />
+                                                            onChangeTitulo={this.onChangeTitulo}
+                                                            onChangeSort={this.onChangeSort}
+                                                            sort={this.state.sort} />
                     <SepararContainer>
                     {servico}
                     </SepararContainer>
