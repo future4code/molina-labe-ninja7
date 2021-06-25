@@ -3,7 +3,12 @@ import axios from 'axios'
 import { url } from '../contants/constant'
 import Cadastro from './Cadastro'
 import styled from 'styled-components'
+<<<<<<< HEAD:labnin/src/components/Saude.js
+import Filter from './Filter'
+import Carrinho from './Carrinho'
+=======
 import Filter from '../components/Filter'
+>>>>>>> 9b312e7d1f12ad92587158f174638a6e9945d725:labnin/src/pages/Saude.js
 const Imagem = styled.img`
     width: 20%;
 `
@@ -27,7 +32,12 @@ export default class Saude extends React.Component {
         clickTaken: false,
         max: 10000,
         min: 0,
-        titulo: ''
+        titulo: '',
+        sort: '',
+        array1:[]
+    }
+    onClickCarrinho=()=>{
+        this.setState({tela:'carrinho'})
     }
     onClickTela = () => {
         this.setState({ tela: 'cadastro' })
@@ -42,9 +52,12 @@ export default class Saude extends React.Component {
                 this.setState({ clickTaken: true })
                 this.setState({ array: res.data.jobs })
                 const Lista = this.state.array.map((dados) => {
+                    
                     if (dados.title === 'Saúde') {
                         const copiaArraySaude = [...this.state.arraySaude, dados]
                         this.setState({ arraySaude: copiaArraySaude })
+                        const copia = [...this.state.array1,dados.description]
+                        this.setState({array1:copia})
                     }
                 })
             })
@@ -74,12 +87,22 @@ export default class Saude extends React.Component {
             })
     }
     filtro = () => {
+       
         return this.state.arraySaude
             .filter((price) => this.state.max ? price.price <= this.state.max : true)
             .filter((price) => this.state.max ? price.price >= this.state.min : true)
             .filter((price) => this.state.titulo ? price.description.includes(this.state.titulo) : true)
+            .sort((a, b) => this.state.sort === 'Preco' ? a.price - b.price : 
+            this.state.sort==='descricao' ? a.description> b.description : b.description > a.description
+            )       
+    }
+   
+    onChangeSort=(event)=>{
+        this.setState({sort:event.target.value})
     }
     render() {
+        
+        console.log('descricao', this.state.array1.sort())
         console.log('taken', this.state.clickTaken)
         
         /*
@@ -104,26 +127,33 @@ export default class Saude extends React.Component {
                     <h4>R${dado.price},00</h4>
                     <h4>Forma de Pagamento: {dado.paymentMethods}</h4>
                     <button onClick={()=>this.updateJob(dado.id)} >Contrate</button>
+                    
                 </Container>
                 )
         })
         return (
             <div>
-                {this.state.tela === 'cadastro' ? <Cadastro /> : <div>
+                {this.state.tela === 'cadastro' ? <Cadastro /> :
+                this.state.tela==='carrinho' ?  <Carrinho arraySaude={this.state.arraySaude}/>:
+                <div>
                     <h1>saude</h1>
                     <Filter arraySaude={this.state.arraySaude} min={this.state.min}
                                                             max={this.state.max}
                                                             titulo={this.state.titulo}
                                                             onChangeMax={this.onChangeMax}
                                                             onChangeMin={this.onChangeMin}
-                                                            onChangeTitulo={this.onChangeTitulo} />
+                                                            onChangeTitulo={this.onChangeTitulo}
+                                                            onChangeSort={this.onChangeSort}
+                                                            sort={this.state.sort} />
                     <SepararContainer>
                     {saude}
                     </SepararContainer>
 
                     <h2>É um profissional da saúde? Se cadastre aqui!</h2>
                     <button onClick={this.onClickTela}>Cadastro</button>
+                    <button onClick={this.onClickCarrinho}>Carrinho</button>
                 </div>}
+               
             </div>
 
         )
