@@ -3,8 +3,12 @@ import axios from 'axios'
 import { url } from '../contants/constant'
 import Cadastro from './Cadastro'
 import styled from 'styled-components'
+<<<<<<< HEAD:labnin/src/components/Saude.js
 import Filter from './Filter'
 import Carrinho from './Carrinho'
+=======
+import Filter from '../components/Filter'
+>>>>>>> 9b312e7d1f12ad92587158f174638a6e9945d725:labnin/src/pages/Saude.js
 const Imagem = styled.img`
     width: 20%;
 `
