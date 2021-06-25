@@ -1,5 +1,22 @@
 .Home:hover {
-cursor: pointer;
-color: #f72163;
+    cursor: pointer;
+    color: #f72163;
 }
 
+.Headerb:hover {
+    cursor: pointer;
+}
+
+/* .Cardimagem:hover{
+    
+    cursor: pointer;
+    background-color: graysca;
+} */
+
+.Cardimagem{
+    -webkit-filter:grayscale(100%);
+}
+.Cardimagem:hover{
+    -webkit-filter:grayscale(0%);
+    transition: 1s;
+}

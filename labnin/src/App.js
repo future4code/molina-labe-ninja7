@@ -5,6 +5,7 @@ import Servico from './pages/Servico'
 import Tecnologia from './pages/Tecnologia'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
+import './components/app.css'
 
 const Body = styled.div`
   box-sizing: border-box;
@@ -77,15 +78,15 @@ export default class App extends React.Component {
                   <h1>Vem conhecer um pouco de nossos serviços!</h1> */}
                   <Icones>
                     <div onClick={this.onClickTelaSaude}>
-                      <ImagemIcones src="http://paiva1-labeninja.surge.sh/static/media/consultoria.d2641770.png" />
+                      <ImagemIcones className="Cardimagem" src="http://paiva1-labeninja.surge.sh/static/media/consultoria.d2641770.png" />
                       <h4>Saúde</h4>
                     </div>
                     <div onClick={this.onClickTelaTecnologia}>
-                      <ImagemIcones src="http://paiva1-labeninja.surge.sh/static/media/webdesign.2716ed47.png" />
+                      <ImagemIcones className="Cardimagem" src="http://paiva1-labeninja.surge.sh/static/media/webdesign.2716ed47.png" />
                       <h4>Tecnologia</h4>
                     </div>
                     <div onClick={this.onClickTelaServico}>
-                      <ImagemIcones src="http://paiva1-labeninja.surge.sh/static/media/suporte.fee53cf4.png" />
+                      <ImagemIcones className="Cardimagem" src="http://paiva1-labeninja.surge.sh/static/media/suporte.fee53cf4.png" />
                       <h4>Assistência técnica</h4>
                     </div>
 

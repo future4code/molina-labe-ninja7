@@ -33,6 +33,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import './app.css'
 
 const Bananinha = styled.div`
 display: flex;
@@ -76,8 +77,8 @@ color: white;
         </ImgNinja>
 
       <Botoes>
-        <Botao1>ANUNCIE</Botao1>
-        <Botao2>ENCONTRE</Botao2>
+        <Botao1 className="Headerb">ANUNCIE</Botao1>
+        <Botao2 className="Headerb">ENCONTRE</Botao2>
       </Botoes>
       
     </Bananinha>
