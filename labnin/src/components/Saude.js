@@ -32,6 +32,9 @@ export default class Saude extends React.Component {
         sort: '',
         array1:[]
     }
+    onClickCarrinho=()=>{
+        this.setState({tela:'carrinho'})
+    }
     onClickTela = () => {
         this.setState({ tela: 'cadastro' })
     }
@@ -87,9 +90,7 @@ export default class Saude extends React.Component {
             .filter((price) => this.state.titulo ? price.description.includes(this.state.titulo) : true)
             .sort((a, b) => this.state.sort === 'Preco' ? a.price - b.price : 
             this.state.sort==='descricao' ? a.description> b.description : b.description > a.description
-            )
-            
-           
+            )       
     }
    
     onChangeSort=(event)=>{
@@ -128,7 +129,9 @@ export default class Saude extends React.Component {
         })
         return (
             <div>
-                {this.state.tela === 'cadastro' ? <Cadastro /> : <div>
+                {this.state.tela === 'cadastro' ? <Cadastro /> :
+                this.state.tela==='carrinho' ?  <Carrinho arraySaude={this.state.arraySaude}/>:
+                <div>
                     <h1>saude</h1>
                     <Filter arraySaude={this.state.arraySaude} min={this.state.min}
                                                             max={this.state.max}
@@ -138,15 +141,15 @@ export default class Saude extends React.Component {
                                                             onChangeTitulo={this.onChangeTitulo}
                                                             onChangeSort={this.onChangeSort}
                                                             sort={this.state.sort} />
-
                     <SepararContainer>
                     {saude}
                     </SepararContainer>
 
                     <h2>É um profissional da saúde? Se cadastre aqui!</h2>
                     <button onClick={this.onClickTela}>Cadastro</button>
+                    <button onClick={this.onClickCarrinho}>Carrinho</button>
                 </div>}
-                <Carrinho arraySaude={this.state.arraySaude}/>
+               
             </div>
 
         )
