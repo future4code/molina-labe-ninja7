@@ -34,26 +34,59 @@
 import React from 'react'
 import styled from 'styled-components'
 
-Header = styled.div`
+const Bananinha = styled.div`
 display: flex;
-justify-content: space-evenly;
-background-image: linear-gradient(45deg, pink, salmon)
-;
+justify-content: space-around;
+background-color: transparent;
+max-width: 100vw;
+
+margin-top: 15px;
+`
+const ImgNinja = styled.div`
+height: 45px;
+display: flex;
+max-width: 50vw;
+
+`
+const Botoes = styled.div`
+display: flex;
+
+`
+const Botao1 = styled.button`
+background-color: #F72163;
+border: 0px;
+border-radius: 5px;
+padding: 4px;
+color: white;
+margin-right: 10px;
+`
+const Botao2 = styled.button`
+background-color: #F72163;
+border: 0px;
+border-radius: 5px;
+padding: 4px;
+color: white;
 `
 
-function Header() {
+  const Header = () => {
   return (
-    <Header>
-      <h1>Olá</h1>
-      <h2>VAI DAR CERTO</h2>
-    </Header>
+    <Bananinha>
+        <ImgNinja>
+        <img src="http://paiva1-labeninja.surge.sh/static/media/nome-labeninja.fedf63e9.png" alt="" />
+        </ImgNinja>
+
+      <Botoes>
+        <Botao1>ANUNCIE</Botao1>
+        <Botao2>ENCONTRE</Botao2>
+      </Botoes>
+      
+    </Bananinha>
   )
   
   
 }
 
 export default Header
-
 
 // import React from "react"
 // import styled from "styled-components";

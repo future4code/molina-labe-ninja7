@@ -4,8 +4,7 @@ import Saude from './pages/Saude'
 import Servico from './pages/Servico'
 import Tecnologia from './pages/Tecnologia'
 import Header from './components/Header'
-
-import Filter from './components/Filter'
+import NavBar from './components/NavBar'
 
 const Body = styled.div`
   box-sizing: border-box;
@@ -13,6 +12,9 @@ const Body = styled.div`
   margin: 0px;
   display: grid;
   
+`
+const Linha = styled.p`
+color: black;
 `
 const RedesSociais = styled.img`
   width: 2%;
@@ -62,45 +64,43 @@ export default class App extends React.Component {
   render() {
     return (
       <Body>
-
-     <Header onClick={this.onClickHome}/>
-
+        <NavBar/>
         <Header/>
 
         {this.state.tela === 'saude' ? <Saude /> :
           this.state.tela === 'tecnologia' ? <Tecnologia /> :
             this.state.tela === 'servico' ? <Servico /> : <div>
-
+              <Linha>_______________________________________________________________________________________________________________________________</Linha>
               <Main>
                 <div>
-                  <h1>Conectando quem precisa com quem sabe fazer</h1>
-                  <h1>Vem conhecer um pouco de nossos serviços!</h1>
+                  {/* <h1>Conectando quem precisa com quem sabe fazer</h1>
+                  <h1>Vem conhecer um pouco de nossos serviços!</h1> */}
                   <Icones>
                     <div onClick={this.onClickTelaSaude}>
-                      <ImagemIcones src="https://site-clientes-assets-production.getninjas.com.br/images/icons/saude.svg" />
+                      <ImagemIcones src="http://paiva1-labeninja.surge.sh/static/media/consultoria.d2641770.png" />
                       <h4>Saúde</h4>
                     </div>
                     <div onClick={this.onClickTelaTecnologia}>
-                      <ImagemIcones src="https://site-clientes-assets-production.getninjas.com.br/images/icons/design-e-tecnologia.svg" />
+                      <ImagemIcones src="http://paiva1-labeninja.surge.sh/static/media/webdesign.2716ed47.png" />
                       <h4>Tecnologia</h4>
                     </div>
                     <div onClick={this.onClickTelaServico}>
-                      <ImagemIcones src="https://site-clientes-assets-production.getninjas.com.br/images/icons/assistencia-tecnica.svg" />
+                      <ImagemIcones src="http://paiva1-labeninja.surge.sh/static/media/suporte.fee53cf4.png" />
                       <h4>Assistência técnica</h4>
                     </div>
 
                   </Icones>
                 </div>
-                <Imagem src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2a51ad96-d8b7-4df3-bf68-828d473c84ef%2Flabeninjas2.png?table=block&id=5269d1e7-6031-402f-b326-fa0ed68bc43f&spaceId=f97190af-c9c2-4592-9ae2-6311b6b728de&width=740&userId=ad5ed72e-da77-403d-b1c4-6bbb86da6e67&cache=v2" />
+                <Imagem src="http://paiva1-labeninja.surge.sh/icone-ninja3.png" />
               </Main>
 
             </div>
         }
-        <Footer>
-          <h2>Gostou da gente? Segue a gente nas redes sociais!</h2>
-          <RedesSociais src="https://image.flaticon.com/icons/png/512/87/87390.png" />
-          <RedesSociais src="https://image.flaticon.com/icons/png/512/49/49351.png" />
-        </Footer>
+          <Footer>
+            <h2>Gostou da gente? Segue a gente nas redes sociais!</h2>
+            <RedesSociais src="https://image.flaticon.com/icons/png/512/87/87390.png" />
+            <RedesSociais src="https://image.flaticon.com/icons/png/512/49/49351.png" />
+          </Footer>
       </Body>
     )
   }

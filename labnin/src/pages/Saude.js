@@ -74,6 +74,7 @@ export default class Saude extends React.Component {
     onChangeTitulo=(event)=>{
         this.setState({titulo:event.target.value})
     }
+    
     updateJob = (id) => {
 
         const body = {
