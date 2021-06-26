@@ -4,6 +4,7 @@ import { url } from '../contants/constant'
 import Cadastro from './Cadastro'
 import styled from 'styled-components'
 import Filter from '../components/Filter'
+import Carrinho from '../components/Carrinho'
 const Imagem = styled.img`
     width: 20%;
 `
@@ -30,6 +31,9 @@ export default class Tecnologia extends React.Component{
         min: 0,
         titulo: '',
         sort: ''
+    }
+    onClickCarrinho=()=>{
+        this.setState({tela:'carrinho'})
     }
     onChangeSort=(event)=>{
         this.setState({sort:event.target.value})
@@ -73,7 +77,7 @@ export default class Tecnologia extends React.Component{
         }
         axios.post(`${url}/jobs/${id}`, body, headers)
             .then(() => {
-                alert('Aguarda um instante você será redirecionado para a página de login')
+                alert('Seu pedido foi adicionado ao carrinho')
             }).catch((err) => {
                 console.log('erro', err.response.data)
             })
@@ -84,7 +88,7 @@ export default class Tecnologia extends React.Component{
         .filter((price)=>this.state.max ? price.price >= this.state.min :true)
         .filter((price)=>this.state.titulo ? price.description.includes(this.state.titulo) :true)
         .sort((a, b) => this.state.sort === 'Preco' ? a.price - b.price : 
-            this.state.sort==='descricao' && a.description> b.description 
+        this.state.sort==='descricao' && a.description.localeCompare(b.description)
             )
     }
     render(){
@@ -102,7 +106,9 @@ export default class Tecnologia extends React.Component{
         })
         return(
             <div>
-                {this.state.tela === 'cadastro' ? <Cadastro /> : <div>
+                {this.state.tela === 'cadastro' ? <Cadastro /> : 
+                this.state.tela==='carrinho' ?  <Carrinho />:
+                <div>
                     <h1>Tecnologia</h1>
                     <Filter                                 min={this.state.min}
                                                             max={this.state.max}
@@ -118,6 +124,7 @@ export default class Tecnologia extends React.Component{
 
                     <h2>É um profissional de serviço? Se cadastre aqui!</h2>
                     <button onClick={this.onClickTela}>Cadastro</button>
+                    <button onClick={this.onClickCarrinho}>Carrinho</button>
                 </div>}
             </div>
         )

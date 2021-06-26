@@ -81,7 +81,7 @@ export default class Saude extends React.Component {
         }
         axios.post(`${url}/jobs/${id}`, body, headers)
             .then(() => {
-                alert('Aguarda um instante você será redirecionado para a página de login')
+                alert('Seu pedido foi adicionado ao carrinho')
             }).catch((err) => {
                 console.log('erro', err.response.data)
             })
@@ -93,7 +93,7 @@ export default class Saude extends React.Component {
             .filter((price) => this.state.max ? price.price >= this.state.min : true)
             .filter((price) => this.state.titulo ? price.description.includes(this.state.titulo) : true)
             .sort((a, b) => this.state.sort === 'Preco' ? a.price - b.price : 
-            this.state.sort==='descricao' ? a.description> b.description : b.description > a.description
+            this.state.sort==='descricao' && a.description.localeCompare(b.description) 
             )       
     }
    
