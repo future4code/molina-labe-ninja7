@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import Saude from '../pages/Saude'
 import Servico from '../pages/Servico'
 import Tecnologia from '../pages/Tecnologia'
+const Main=styled.div`
+    background-color: #F5F4FC;
+`
 const Botao=styled.button`
     margin: 1%;
     width: 25%;
@@ -25,6 +28,8 @@ const CarrinhoCompra=styled.div`
     margin-left: 20%;
     margin-top: 2%;
     padding: 1%;
+    background-color: rgb(223, 219, 240);
+
 
 `
 const SepararValor=styled.div`
@@ -130,7 +135,7 @@ export default class Carrinho extends React.Component {
                 {this.state.trocaTela==='saude' ? <Saude/>:
                 this.state.trocaTela==='servico'? <Servico/>:
                 this.state.trocaTela==='tecnologia'? <Tecnologia/>:
-                <div>
+                <Main>
                 {carrinho}
                 <SepararValor>
                 <h2>Valor Total: R${soma},00</h2>
@@ -144,7 +149,7 @@ export default class Carrinho extends React.Component {
                 <Botao onClick={this.onClickTelaTecnologia}>Tecnologia </Botao>
                 </SepararBotao>
                
-                </div>
+                </Main>
                 }
                 
             </div>

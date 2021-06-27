@@ -8,8 +8,34 @@ import Carrinho from '../components/Carrinho'
 const Imagem = styled.img`
     width: 20%;
 `
+const AlinharBotao=styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const Botao=styled.button`
+    margin: 1%;
+    width: 25%;
+    padding: 1%;
+    border-radius: 5%;
+    color: #13293D;
+    background-color: rgb(223, 219, 240);
+`
+const Main=styled.div`
+    background-color: #F5F4FC;
+`
+const Texto = styled.h1`
+    text-align: center;
+`
 const Container = styled.div`
     border: 1px solid black;
+    margin:2%;
+    padding: 1%;
+    background-color: rgb(223, 219, 240);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 `
 const SepararContainer = styled.div`
     display: grid;
@@ -107,8 +133,8 @@ export default class Servico extends React.Component{
             <div>
                 {this.state.tela === 'cadastro' ? <Cadastro /> :
                 this.state.tela==='carrinho' ?  <Carrinho />:
-                <div>
-                    <h1>Serviço</h1>
+                <Main>
+                    <Texto>Assistência Técnica</Texto>
                     <Filter                                  min={this.state.min}
                                                             max={this.state.max}
                                                             titulo={this.state.titulo}
@@ -121,10 +147,13 @@ export default class Servico extends React.Component{
                     {servico}
                     </SepararContainer>
 
-                    <h2>É um profissional de serviço? Se cadastre aqui!</h2>
-                    <button onClick={this.onClickTela}>Cadastro</button>
-                    <button onClick={this.onClickCarrinho}>Carrinho</button>
-                </div>}
+                    <Texto>É um profissional de serviço? Se cadastre aqui!</Texto>
+                    <AlinharBotao>
+                        <Botao onClick={this.onClickTela}>Cadastro</Botao>
+                        <Botao onClick={this.onClickCarrinho}>Carrinho</Botao>
+                    </AlinharBotao>
+                    
+                </Main>}
             </div>
         )
     }

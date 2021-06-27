@@ -5,15 +5,38 @@ import Cadastro from './Cadastro'
 import styled from 'styled-components'
 import Carrinho from'../components/Carrinho'
 import Filter from '../components/Filter'
+const AlinharBotao=styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const Botao=styled.button`
+    margin: 1%;
+    width: 25%;
+    padding: 1%;
+    border-radius: 5%;
+    color: #13293D;
+    background-color: rgb(223, 219, 240);
+`
+const Texto = styled.h1`
+    text-align: center;
+`
 
-
-
-
+const Main=styled.div`
+    background-color: #F5F4FC;
+`
 const Imagem = styled.img`
     width: 20%;
 `
 const Container = styled.div`
     border: 1px solid black;
+    margin:2%;
+    padding: 1%;
+    background-color: rgb(223, 219, 240);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 `
 const SepararContainer = styled.div`
     display: grid;
@@ -105,18 +128,6 @@ export default class Saude extends React.Component {
         console.log('descricao', this.state.array1.sort())
         console.log('taken', this.state.clickTaken)
         
-        /*
-        const listaSaude = this.state.arraySaude.map((dado) => {
-            return (
-                <Container>
-                    <Imagem src="https://images.emojiterra.com/google/android-11/512px/1f977.png" />
-                    <h4>Descrição: {dado.description}</h4>
-                    <h4>R${dado.price},00</h4>
-                    <h4>Forma de Pagamento: {dado.paymentMethods}</h4>
-                    <button onClick={() => this.updateJob(dado.id)} >Gostei desse</button>
-                </Container>
-            )
-        })*/
         const lista = this.filtro()
         console.log('lista',lista)
         const saude=lista.map((dado)=>{
@@ -134,9 +145,9 @@ export default class Saude extends React.Component {
         return (
             <div>
                 {this.state.tela === 'cadastro' ? <Cadastro /> :
-                this.state.tela==='carrinho' ?  <Carrinho arraySaude={this.state.arraySaude}/>:
-                <div>
-                    <h1>saude</h1>
+                this.state.tela==='carrinho' ?  <Carrinho />:
+                <Main>
+                    <Texto>Saúde</Texto>
                     <Filter arraySaude={this.state.arraySaude} min={this.state.min}
                                                             max={this.state.max}
                                                             titulo={this.state.titulo}
@@ -149,10 +160,12 @@ export default class Saude extends React.Component {
                     {saude}
                     </SepararContainer>
 
-                    <h2>É um profissional da saúde? Se cadastre aqui!</h2>
-                    <button onClick={this.onClickTela}>Cadastro</button>
-                    <button onClick={this.onClickCarrinho}>Carrinho</button>
-                </div>}
+                    <Texto>É um profissional da saúde? Se cadastre aqui!</Texto>
+                    <AlinharBotao>
+                    <Botao onClick={this.onClickTela}>Cadastro</Botao>
+                    <Botao onClick={this.onClickCarrinho}>Carrinho</Botao>
+                    </AlinharBotao>
+                </Main>}
                
             </div>
 
