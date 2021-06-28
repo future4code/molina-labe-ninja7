@@ -9,33 +9,56 @@ const Imagem = styled.img`
     width: 20%;
     border-radius: 100%;
 `
+const Descrever = styled.input`
+    height: 10vh;
+    width: 50%;
+    margin-bottom: 1%;
+`
 const Cadastros = styled.h1`
     text-align: center;
 `
-const Main = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+const AlinharBotao=styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+`
+const Botao=styled.button`
+    margin: 1%;
+    padding: 1%;
+    border-radius: 5%;
+    color: #13293D;
+    background-color: rgb(223, 219, 240);
+    width: 100%;
+`
+const Main=styled.div`
+    background-color: #F5F4FC;
 `
 const SepararInputs = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+    margin: 2%;
 
 `
+
 const Adicionar = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin-right: 20%;
+    margin-left: 20%;
 `
-const AlinharBotao = styled.div`
-    display: flex;
-`
+
 const InputFlex = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    margin-right: 30%;
+    margin-left: 30%;
+    padding: 2%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: rgb(223, 219, 240);
 `
+
 const headers = {
     headers: {
         Authorization: "e857c53a-24f4-4fb0-801b-ff6226302fca"
@@ -143,60 +166,70 @@ export default class Cadastro extends React.Component {
         })
         return (
             <Main>
-                {this.state.irParaTela === 'servico' ? <Servico /> :
-                    this.state.irParaTela === 'saude' ? <Saude /> :
-                        this.state.irParaTela === 'tecnologia' ? <Tecnologia arrayTecnologia={this.state.arrayTecnologia} /> :
+                
+                    {this.state.irParaTela === 'servico' ? <Servico /> :
+                        this.state.irParaTela === 'saude' ? <Saude /> :
+                            this.state.irParaTela === 'tecnologia' ? <Tecnologia arrayTecnologia={this.state.arrayTecnologia} /> :
+                                
+                                
+                                    <div>
+                                        <div><Cadastros>Bora Cadastrar?</Cadastros></div>
+                                        <div>
+                                            
+                                                <InputFlex>
+                                                <SepararInputs>
+                                                    <label>Serviço Prestado: </label>
+                                                    <select onChange={this.onChangeTitulo} value={this.state.inputTitulo}   >
+                                                        <option onChange={this.onChangeTitulo} value='Assistência técnica' >Assistência técnica</option>
+                                                        <option onChange={this.onChangeTitulo} value='Saúde' >Saúde</option>
+                                                        <option onChange={this.onChangeTitulo} value='Tecnologia'>Tecnologia</option>
+                                                    </select>
+                                                    </SepararInputs>
+                                                    <SepararInputs>
+                                                    <label>Preço: </label>
+                                                    <input placeholder='Preço' onChange={this.onChangePreco} value={this.state.inputPreco} />
 
-                            <div>
-                                <div><Cadastros>Bora Cadastrar?</Cadastros></div>
-                                <div>
-                                    <SepararInputs>
-                                        <InputFlex>
-                                            <label>Serviço Prestado:</label>
-                                            <select onChange={this.onChangeTitulo} value={this.state.inputTitulo}   >
-                                                <option onChange={this.onChangeTitulo} value='Assistência técnica' >Assistência técnica</option>
-                                                <option onChange={this.onChangeTitulo} value='Saúde' >Saúde</option>
-                                                <option onChange={this.onChangeTitulo} value='Tecnologia'>Tecnologia</option>
-                                            </select>
-                                            <label>Preço</label>
-                                            <input placeholder='Preço' onChange={this.onChangePreco} value={this.state.inputPreco} />
+                                                    </SepararInputs>
+                                                   
+                                               
+                                                    <SepararInputs>
+                                                    <label>Metodo de Pagamento</label>
+                                                    <input placeholder='Métodos de pagamento' onChange={this.onChangePagamentos} value={this.state.inputPagamentos} />
+                                                    </SepararInputs>
+                                                    
+                                                    <SepararInputs>
+                                                        <label>Data para expirar:</label>
 
-                                        </InputFlex>
-                                        <InputFlex>
+                                                        <input placeholder='data para expirar' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" onChange={this.onChangeData} type='date' value={this.state.inputData} />
+                                                    </SepararInputs>
 
-                                            <label>Metodo de Pagamento</label>
-                                            <input placeholder='Métodos de pagamento' onChange={this.onChangePagamentos} value={this.state.inputPagamentos} />
-                                            <div>
-                                                <label>Data para expirar:</label>
+                                               
+                                            
 
-                                                <input placeholder='data para expirar' pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" onChange={this.onChangeData} type='date' value={this.state.inputData} />
-                                            </div>
+                                            <Descrever placeholder='descreva sobre ele' onChange={this.onChangeDescricao} value={this.state.inputDrescricao} />
+                                            <button onClick={this.createJob}>Adicionar</button>
+                                            </InputFlex>
+                                        </div>
+                                    </div> }
+                               
+                                   { this.state.irParaTela === 'cadastrado' && <Adicionar>
+                                        <Imagem src='https://image.shutterstock.com/image-vector/cute-happy-ninja-smiling-his-600w-359792546.jpg' />
+                                        <h1>Parabéns seu cadastro foi realizado com sucesso, agora vá
+                                            para tela em que se cadastrou e vai estar lá!
+                                        </h1>
+                                        <AlinharBotao>
+                                            <Botao onClick={this.onClickSaude}>Saúde</Botao>
+                                            <Botao onClick={this.onClickServico}>Assistência Técnica</Botao>
+                                            <Botao onClick={this.onClickTecnologia}>Tecnologia</Botao>
+                                        </AlinharBotao>
 
-                                        </InputFlex>
-                                    </SepararInputs>
-
-                                    <input placeholder='descreva sobre ele' onChange={this.onChangeDescricao} value={this.state.inputDrescricao} />
-                                    <button onClick={this.createJob}>Adicionar</button>
-                                </div>
-                            </div>
+                                    </Adicionar>    }
+                                    
+                                    
 
 
-                }
-                {this.state.irParaTela === 'cadastrado' && <Adicionar>
-                    <Imagem src='https://image.shutterstock.com/image-vector/cute-happy-ninja-smiling-his-600w-359792546.jpg' />
-                    <h1>Parabéns seu cadastro foi realizado com sucesso, agora vá
-                        para tela em que se cadastrou e vai estar lá!
-                    </h1>
-                    <AlinharBotao>
-                        <button onClick={this.onClickSaude}>Saúde</button>
-                        <button onClick={this.onClickServico}>Assistência Técnica</button>
-                        <button onClick={this.onClickTecnologia}>Tecnologia</button>
-                    </AlinharBotao>
-
-                </Adicionar>}
-
+               
             </Main>
-
         )
     }
 }
