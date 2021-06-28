@@ -4,8 +4,9 @@ import './app.css'
 
 const Navegacao = styled.div`
 height: 5vw;
-background-color: #0E2948;
+background-color: #27363C;
 display: flex;
+width: 100vw;
 `
 const Botoes = styled.div`
 display: flex;

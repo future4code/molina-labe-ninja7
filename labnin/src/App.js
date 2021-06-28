@@ -6,6 +6,7 @@ import Tecnologia from './pages/Tecnologia'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
 import './components/app.css'
+import Footer from './components/Footer'
 
 const Body = styled.div`
   box-sizing: border-box;
@@ -16,10 +17,7 @@ const Body = styled.div`
 `
 const Linha = styled.p`
 color: black;
-`
-const RedesSociais = styled.img`
-  width: 2%;
-  margin:0.5%;
+max-width: 100vw;
 `
 const Imagem = styled.img`
   width: 30%;
@@ -39,13 +37,7 @@ const Icones = styled.div`
   display: flex;
   justify-content: space-around;
  `
-const Footer = styled.div`
-    text-align: center;
-    background-color: #13293D;
-    color:white;
-    margin-top:0%;
-    padding: 0%;
- `
+
 export default class App extends React.Component {
   state = {
     tela: 'principal',
@@ -71,7 +63,7 @@ export default class App extends React.Component {
         {this.state.tela === 'saude' ? <Saude /> :
           this.state.tela === 'tecnologia' ? <Tecnologia /> :
             this.state.tela === 'servico' ? <Servico /> : <div>
-              <Linha>_______________________________________________________________________________________________________________________________</Linha>
+              <Linha>________________________________________________________________________________________________________________________</Linha>
               <Main>
                 <div>
                   {/* <h1>Conectando quem precisa com quem sabe fazer</h1>
@@ -92,16 +84,12 @@ export default class App extends React.Component {
 
                   </Icones>
                 </div>
-                <Imagem src="http://paiva1-labeninja.surge.sh/icone-ninja3.png" />
+                <Imagem src="https://media.istockphoto.com/vectors/ninja-warrior-mascot-logo-vector-vector-id1012573350?b=1&k=6&m=1012573350&s=612x612&w=0&h=j63d8a48TVFqX0KoUMVsTmDsd8I2YZBOIrS-eOt1Oas=" />
               </Main>
 
             </div>
         }
-          <Footer>
-            <h2>Gostou da gente? Segue a gente nas redes sociais!</h2>
-            <RedesSociais src="https://image.flaticon.com/icons/png/512/87/87390.png" />
-            <RedesSociais src="https://image.flaticon.com/icons/png/512/49/49351.png" />
-          </Footer>
+          <Footer/>
       </Body>
     )
   }
