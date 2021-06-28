@@ -1,6 +1,7 @@
+
 .Home:hover {
     cursor: pointer;
-    color: #f72163;
+    color: #eb4a60;
 }
 
 .Headerb:hover {
@@ -19,4 +20,18 @@
 .Cardimagem:hover{
     -webkit-filter:grayscale(0%);
     transition: 1s;
+}
+
+/* .RedesSociais:hover {
+    cursor: pointer;
+} */
+
+.RedesSociais {
+    -webkit-filter:grayscale(100%);
+}
+
+.RedesSociais:hover {
+    -webkit-filter:grayscale(0%);
+    transition: 1s;
+    cursor: pointer;
 }

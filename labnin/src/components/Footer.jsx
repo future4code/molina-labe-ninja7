@@ -28,9 +28,10 @@ const Footer = () => {
         <Rodape>
 
             <h2>Se liga nas nossas redes sociais</h2>
-            <RedesSociais src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"/>
-            <RedesSociais src="https://image.flaticon.com/icons/png/512/174/174857.png"/>
-            <RedesSociais src="https://imagensemoldes.com.br/wp-content/uploads/2020/04/Facebook-PNG.png"/>
+            <RedesSociais className="RedesSociais" src="https://site-clientes-assets-production.getninjas.com.br/images/icons/youtube.png"/>
+            <RedesSociais className="RedesSociais" src="https://site-clientes-assets-production.getninjas.com.br/images/icons/facebook.png"/>
+            <RedesSociais className="RedesSociais" src="https://site-clientes-assets-production.getninjas.com.br/images/icons/instagram.png"/>
+            <RedesSociais className="RedesSociais" src="https://site-clientes-assets-production.getninjas.com.br/images/icons/twitter.png"/>
         </Rodape>
     )
 }

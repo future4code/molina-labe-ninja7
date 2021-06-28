@@ -84,7 +84,7 @@ export default class App extends React.Component {
 
                   </Icones>
                 </div>
-                <Imagem src="https://media.istockphoto.com/vectors/ninja-warrior-mascot-logo-vector-vector-id1012573350?b=1&k=6&m=1012573350&s=612x612&w=0&h=j63d8a48TVFqX0KoUMVsTmDsd8I2YZBOIrS-eOt1Oas=" />
+                <Imagem src="" />
               </Main>
 
             </div>
