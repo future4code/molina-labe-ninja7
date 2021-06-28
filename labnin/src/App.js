@@ -19,8 +19,8 @@ const Linha = styled.p`
 color: black;
 max-width: 100vw;
 `
-const Imagem = styled.img`
-  width: 30%;
+const QuemSomos = styled.h1`
+font-size: 12px;
 `
 const ImagemIcones = styled.img`
   width: 139px;
@@ -84,7 +84,7 @@ export default class App extends React.Component {
 
                   </Icones>
                 </div>
-                <Imagem src="" />
+              <QuemSomos>GetNinjas é a maior plataformade <br/> contratação de serviços do Brasil.<br/> Conectamos Profissionais de todo<br/> o Brasil com pessoas solicitando serviço, <br/>atendendo com qualidade, <br/>facilidade e rapidez todos os<br/> tipos de necessidade.</QuemSomos>
               </Main>
 
             </div>
